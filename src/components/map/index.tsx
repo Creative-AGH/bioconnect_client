@@ -4,6 +4,8 @@ import Map, {
   Layer,
   LayerProps,
   FullscreenControl,
+  NavigationControl,
+  GeolocateControl
 } from "react-map-gl";
 import { Position } from "geojson";
 import { useGetAllMarkersQuery } from "../../features/api/mapSlice";
@@ -13,7 +15,7 @@ const layerStyle = {
   id: "point",
   type: "circle",
   paint: {
-    "circle-radius": 30,
+    "circle-radius": 15,
     "circle-color": "#007cbf",
   },
 } as LayerProps;
@@ -88,13 +90,15 @@ const MapComponent = () => {
         initialViewState={{
           longitude: data.longitude || lng,
           latitude: data.latitude || lat,
-          zoom: 14,
+          zoom: 5,
         }}
         mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         style={{ width: 1000, height: 700 }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
       >
         <FullscreenControl />
+        <NavigationControl />
+        <GeolocateControl />
         <Source id="my-data" type="geojson" data={featureCollection}>
           <Layer {...layerStyle} />
         </Source>
