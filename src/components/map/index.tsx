@@ -6,6 +6,7 @@ import Map, {
   FullscreenControl,
 } from "react-map-gl";
 import { useGetAllMarkersQuery } from "../../features/api/mapSlice";
+import { useGeoLocation } from "../../hooks/useGeoLocation";
 
 const layerStyle = {
   id: "point",
@@ -16,18 +17,25 @@ const layerStyle = {
   },
 } as LayerProps;
 
-const MapComponent = ({ lat, lng }: { lat: number; lng: number }) => {
+const initialFeatureCollection: GeoJSON.FeatureCollection = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [0, 0],
+      },
+      properties: { title: "t" },
+    },
+  ],
+};
+
+const MapComponent = () => {
   const [featureCollection, setFeatureCollection] =
-    useState<GeoJSON.FeatureCollection>({
-      type: "FeatureCollection",
-      features: [
-        {
-          type: "Feature",
-          geometry: { type: "Point", coordinates: [lng, lat] },
-          properties: { title: "You are here" },
-        },
-      ],
-    });
+    useState<GeoJSON.FeatureCollection>(initialFeatureCollection);
+
+  const { lat, lng, error: errGeoLoc } = useGeoLocation();
 
   const { data, error, isLoading } = useGetAllMarkersQuery(null);
 
@@ -51,6 +59,27 @@ const MapComponent = ({ lat, lng }: { lat: number; lng: number }) => {
       });
     }
   }, [data]);
+
+  useEffect(() => {
+    if (lat && lng) {
+      setFeatureCollection((prev) => {
+        return {
+          type: "FeatureCollection",
+          features: [
+            ...prev.features,
+            {
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [lng, lat],
+              },
+              properties: { title: "You are here" },
+            },
+          ],
+        };
+      });
+    }
+  }, [lat, lng]);
 
   return (
     data && (
