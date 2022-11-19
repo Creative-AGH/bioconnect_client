@@ -5,6 +5,7 @@ import Map, {
   LayerProps,
   FullscreenControl,
 } from "react-map-gl";
+import { Position } from "geojson";
 import { useGetAllMarkersQuery } from "../../features/api/mapSlice";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 
@@ -24,7 +25,7 @@ const initialFeatureCollection: GeoJSON.FeatureCollection = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [0, 0],
+        coordinates: [] as Position,
       },
       properties: { title: "t" },
     },
