@@ -1,0 +1,57 @@
+{
+    "list":[
+        {
+            "name": "mięso",
+            "composstable": false,
+            "imgName": "meat",
+            "description": "Z tych samych względów, z jakich nie powinno się wrzucać do kompostu mięsa, nie powinniśmy kompostować resztek warzyw gotowanych w wywarze mięsnym. Są one przesiąknięte aromatem mięsnym i będą przyciągać do kompostownika mikroorganizmy oraz szkodniki występujące w psującym się mięsie. Ten błąd jest powszechnie popełniany. Wydaje nam się, że kompostujemy tylko resztki warzyw. Jednak to właśnie warzywa z wywaru mięsnego często są powodem powstawania nieprzyjemnego zapachu z kompostownika."
+        },
+        {
+            "name": "produkty pochodzenia zwierzęcego",
+            "composstable": false,
+            "description": "Do kompostowania nie wolno wrzucać odpadków pochodzenia zwierzęcego, czyli kości, tłuszczu, mięsa, całych jaj (dozwolone są same skorupki) i nabiału. Rozkładające się resztki są miejscem namnażania się szkodliwych drobnoustrojów, przez co wydzielają nieprzyjemny zapach, który może przeciągać szczury. Ze względów sanitarnych nie wolno wrzucać do kompostownika zwierzęcych odchodów, kociego żwirku i ściółek z klatek zwierząt.",
+            "imgName": "cheese"
+        },
+        {
+            "name": "chemikalia",
+            "composstable": false,
+            "imgName": "soap"
+        },
+        {
+            "name": "rośliny zaatakowane przez szkodniki",
+            "composstable": false,
+            "description": "Najczęściej popełnianym błędem jest wrzucanie do kompostownika części roślin porażonych przez choroby i szkodniki. Zarodniki grzybów oraz jaja i zimujące larwy szkodników mogą przetrwać proces kompostowania. W formie aktywnej mogą zostać wprowadzone do gleby podczas rozrzucania kompostu i być źródłem zakażenia roślin. Zainfekowane resztki roślinne należy usuwać z ogrodu, a nie wrzucać do kompostownika.",
+            "imgName": "plant_insect"
+        },
+        {
+            "name": "chwasty, które zdążyły wytworzyć nasiona",
+            "composstable": false,
+            "description":"Nie powinno się również kompostować chwastów wieloletnich, które z łatwością odradzają się z korzeni. Chodzi tutaj o takie chwasty jak: perz, podagrycznik, pokrzywa zwyczajna, czy skrzyp polny. Chwasty te po wrzuceniu do kompostu z łatwością się w nim zakorzenią i rozpoczną wzrost. Potem wraz z kompostem rozniosą się po całym ogrodzie.",
+            "imgName": "weed"
+        },
+        {
+            "name": "igliwie, gałęzie",
+            "composstable": false,
+            "description":"Do pryzmy kompostowej nie można wrzucać grubych gałęzi, igliwia i liści zawierających duże ilości garbników (np. liści dębu), ponieważ będą się one długo rozkładały i tym samym spowalniały proces kompostowania. Grube konary drzew przed wrzuceniem do kompostownika należy rozdrobnić. Igliwie i resztę części roślin iglastych należy kompostować w oddzielnym miejscu, ze względu na obecność żywic, które hamują rozkład substancji organicznych, a także wpływ na zakwaszenie kompostu.",
+            "imgName": "tree"
+        },
+        {
+            "name": "tkaniny",
+            "composstable": false,
+            "description":"Nie ulegają one procesowi kompostowania i mogą zawierać szkodliwe substancje. Wrzucanie takich materiałów do kompostownika gwarantuje skażenie kompostu.",
+            "imgName": "fabric"
+        },
+        {
+            "name": "baterie",
+            "composstable": false,
+            "description":"Nie ulegają one procesowi kompostowania i mogą zawierać szkodliwe substancje. Wrzucanie takich materiałów do kompostownika gwarantuje skażenie kompostu.",
+            "imgName": "battery"
+        },
+        {
+            "name": "elektronika",
+            "composstable": false,
+            "description":"Nie ulegają one procesowi kompostowania i mogą zawierać szkodliwe substancje. Wrzucanie takich materiałów do kompostownika gwarantuje skażenie kompostu.",
+            "imgName": "laptop"
+        }
+    ]
+}
