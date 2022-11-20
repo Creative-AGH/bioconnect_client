@@ -6,7 +6,6 @@ import Map, {
   GeolocateControl,
 } from "react-map-gl";
 import { Position } from "geojson";
-import { useGetAllMarkersQuery } from "../../features/api/mapSlice";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import checkType from "./checktype";
 
@@ -26,38 +25,42 @@ const MapComponent = () => {
   );
 
   const { lat, lng, error: errGeoLoc } = useGeoLocation();
-  const { data, error, isLoading } = useGetAllMarkersQuery(null);
 
   useEffect(() => {
-    if (data) {
-      setFeatureCollection((prev: any) => {
-        return [
-          ...prev,
-          {
-            type: "compost",
-            geometry: {
-              type: "Point",
-              coordinates: [data.longitude + 0.5, data.latitude],
-            },
+    setFeatureCollection((prev: any) => {
+      return [
+        ...prev,
+        {
+          type: "compost",
+          geometry: {
+            type: "Point",
+            coordinates: [1 + 0.5, 2],
           },
-          {
-            type: "green",
-            geometry: {
-              type: "Point",
-              coordinates: [data.longitude, data.latitude + 0.5],
-            },
+        },
+        {
+          type: "green",
+          geometry: {
+            type: "Point",
+            coordinates: [1, 2 + 0.5],
           },
-          {
-            type: "powder",
-            geometry: {
-              type: "Point",
-              coordinates: [data.longitude, data.latitude],
-            },
+        },
+        {
+          type: "powder",
+          geometry: {
+            type: "Point",
+            coordinates: [1, 2],
           },
-        ];
-      });
-    }
-  }, [data]);
+        },
+        {
+          type: "container",
+          geometry: {
+            type: "Point",
+            coordinates: [1, 8],
+          },
+        },
+      ];
+    });
+  }, []);
 
   useEffect(() => {
     if (lat && lng) {
@@ -77,42 +80,39 @@ const MapComponent = () => {
   }, [lat, lng]);
 
   return (
-    data && (
-      <Map
-        initialViewState={{
-          longitude: data.longitude || lng,
-          latitude: data.latitude || lat,
-          zoom: 5,
-        }}
-        mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-        style={{ width: 1000, height: 700 }}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
-      >
-        <FullscreenControl />
-
-        <NavigationControl />
-        <GeolocateControl />
-        {featureCollection.map((feature: any, index: any) => {
-          const {
-            coordinates: [markerLat, markerLng],
-          } = feature.geometry;
-          const { type } = feature;
-          return (
-            markerLat &&
-            markerLng && (
-              <Marker
-                longitude={feature.geometry.coordinates[0]}
-                latitude={feature.geometry.coordinates[1]}
-                anchor="bottom"
-                key={index}
-              >
-                <img src={checkType(type)} alt="title" />
-              </Marker>
-            )
-          );
-        })}
-      </Map>
-    )
+    <Map
+      initialViewState={{
+        longitude: lng,
+        latitude: lat,
+        zoom: 5,
+      }}
+      mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      style={{ width: 1000, height: 700 }}
+      mapStyle="mapbox://styles/mapbox/streets-v9"
+    >
+      <FullscreenControl />
+      <NavigationControl />
+      <GeolocateControl />
+      {featureCollection.map((feature: any, index: any) => {
+        const {
+          coordinates: [markerLat, markerLng],
+        } = feature.geometry;
+        const { type } = feature;
+        return (
+          markerLat &&
+          markerLng && (
+            <Marker
+              longitude={feature.geometry.coordinates[0]}
+              latitude={feature.geometry.coordinates[1]}
+              anchor="bottom"
+              key={index}
+            >
+              <img src={checkType(type)} alt="title" />
+            </Marker>
+          )
+        );
+      })}
+    </Map>
   );
 };
 

@@ -10,6 +10,8 @@ export default function checkType(type: string) {
       return compost;
     case "green":
       return green;
+    case "container":
+      return "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png";
     default:
       return "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png";
   }

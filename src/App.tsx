@@ -6,7 +6,7 @@ import RegisterForm from "./components/forms/registerForm";
 function App() {
   return (
     <>
-      {/* <Map /> */}
+      <Map />
       <RegisterForm />
     </>
   );

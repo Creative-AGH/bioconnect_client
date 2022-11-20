@@ -10,9 +10,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
       query: (state: any) => ({
         url: "/all/register",
         method: "POST",
-        body: {
-          state,
-        },
+        body: state,
         providesTags: ["User"],
       }),
     }),
