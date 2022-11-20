@@ -4,11 +4,11 @@ import powder from "../../assets/img/powder.png";
 
 export default function checkType(type: string) {
   switch (type) {
-    case "powder":
+    case "HASH":
       return powder;
-    case "compost":
+    case "WOOD":
       return compost;
-    case "green":
+    case "GRASS":
       return green;
     case "container":
       return "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png";

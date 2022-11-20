@@ -2,20 +2,15 @@ import { apiSlice } from "./apiSlice";
 
 export const mapApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getMap: builder.query({
-      query: () => "/addresses",
-      providesTags: ["Map"],
-    }),
     getAllMarkers: builder.query({
-      query: () => "/addresses",
-
+      query: () => "/marker/all",
       providesTags: ["Marker"],
     }),
     getMarker: builder.query({
-      query: (id: string) => `/markers/${id}`,
+      query: (id: string) => `/marker/${id}`,
       providesTags: (result, error, id) => [{ type: "Marker", id }],
     }),
   }),
 });
 
-export const { useGetAllMarkersQuery, useGetMapQuery } = mapApiSlice;
+export const { useGetAllMarkersQuery, useGetMarkerQuery } = mapApiSlice;

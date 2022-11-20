@@ -7,6 +7,7 @@ import Map, {
 } from "react-map-gl";
 import { Position } from "geojson";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
+import { useGetAllMarkersQuery } from "../../features/api/mapSlice";
 import checkType from "./checktype";
 
 const initialFeatureCollection = [
@@ -25,59 +26,32 @@ const MapComponent = () => {
   );
 
   const { lat, lng, error: errGeoLoc } = useGeoLocation();
+  const { data, error: errMarkers } = useGetAllMarkersQuery(null);
 
   useEffect(() => {
-    setFeatureCollection((prev: any) => {
-      return [
-        ...prev,
-        {
-          type: "compost",
-          geometry: {
-            type: "Point",
-            coordinates: [1 + 0.5, 2],
-          },
-        },
-        {
-          type: "green",
-          geometry: {
-            type: "Point",
-            coordinates: [1, 2 + 0.5],
-          },
-        },
-        {
-          type: "powder",
-          geometry: {
-            type: "Point",
-            coordinates: [1, 2],
-          },
-        },
-        {
-          type: "container",
-          geometry: {
-            type: "Point",
-            coordinates: [1, 8],
-          },
-        },
-      ];
-    });
-  }, []);
-
-  useEffect(() => {
-    if (lat && lng) {
+    if (data) {
       setFeatureCollection((prev: any) => {
-        return [
-          ...prev,
-          {
-            type: "position",
-            geometry: {
-              type: "Point",
-              coordinates: [lng, lat],
-            },
-          },
-        ];
+        return [...prev, ...data];
       });
     }
-  }, [lat, lng]);
+  }, [data]);
+
+  // useEffect(() => {
+  //   if (lat && lng) {
+  //     setFeatureCollection((prev: any) => {
+  //       return [
+  //         ...prev,
+  //         {
+  //           type: "position",
+  //           geometry: {
+  //             type: "Point",
+  //             coordinates: [lng, lat],
+  //           },
+  //         },
+  //       ];
+  //     });
+  //   }
+  // }, [lat, lng]);
 
   return (
     <Map
@@ -97,25 +71,31 @@ const MapComponent = () => {
       <FullscreenControl />
       <NavigationControl />
       <GeolocateControl />
-      {featureCollection.map((feature: any, index: any) => {
-        const {
-          coordinates: [markerLat, markerLng],
-        } = feature.geometry;
-        const { type } = feature;
-        return (
-          markerLat &&
-          markerLng && (
-            <Marker
-              longitude={feature.geometry.coordinates[0]}
-              latitude={feature.geometry.coordinates[1]}
-              anchor="bottom"
-              key={index}
-            >
-              <img src={checkType(type)} alt="title" />
-            </Marker>
-          )
-        );
-      })}
+      {data &&
+        featureCollection.map(
+          (
+            {
+              id,
+              description,
+              categoryOfWaste,
+              howMuchBioWaste,
+              accountId,
+              dateOfCreate,
+              x,
+              y,
+            }: any,
+            index: any
+          ) => {
+            return (
+              x &&
+              y && (
+                <Marker longitude={x} latitude={y} anchor="bottom" key={index}>
+                  <img src={checkType(categoryOfWaste)} alt="title" />
+                </Marker>
+              )
+            );
+          }
+        )}
     </Map>
   );
 };
