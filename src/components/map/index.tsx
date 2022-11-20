@@ -8,16 +8,14 @@ import Map, {
 import { Position } from "geojson";
 import { useGetAllMarkersQuery } from "../../features/api/mapSlice";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
+import checkType from "./checktype";
 
-const initialFeatureCollection: any = [
+const initialFeatureCollection = [
   {
     type: "Feature",
     geometry: {
       type: "Point",
       coordinates: [] as Position,
-    },
-    properties: {
-      image: "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
     },
   },
 ];
@@ -36,14 +34,24 @@ const MapComponent = () => {
         return [
           ...prev,
           {
-            type: "Feature",
+            type: "compost",
+            geometry: {
+              type: "Point",
+              coordinates: [data.longitude + 0.5, data.latitude],
+            },
+          },
+          {
+            type: "green",
+            geometry: {
+              type: "Point",
+              coordinates: [data.longitude, data.latitude + 0.5],
+            },
+          },
+          {
+            type: "powder",
             geometry: {
               type: "Point",
               coordinates: [data.longitude, data.latitude],
-            },
-            properties: {
-              image:
-                "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
             },
           },
         ];
@@ -57,14 +65,10 @@ const MapComponent = () => {
         return [
           ...prev,
           {
-            type: "Feature",
+            type: "position",
             geometry: {
               type: "Point",
               coordinates: [lng, lat],
-            },
-            properties: {
-              image:
-                "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
             },
           },
         ];
@@ -92,7 +96,7 @@ const MapComponent = () => {
           const {
             coordinates: [markerLat, markerLng],
           } = feature.geometry;
-          const { title, image } = feature.properties;
+          const { type } = feature;
           return (
             markerLat &&
             markerLng && (
@@ -101,15 +105,8 @@ const MapComponent = () => {
                 latitude={feature.geometry.coordinates[1]}
                 anchor="bottom"
                 key={index}
-                style={{ display: "grid", placeItems: "center" }}
               >
-                <img src={image} alt="title" />
-                <span
-                  style={{
-                    maxWidth: "90px",
-                    textAlign: "center",
-                  }}
-                ></span>
+                <img src={checkType(type)} alt="title" />
               </Marker>
             )
           );
