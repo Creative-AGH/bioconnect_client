@@ -1,0 +1,40 @@
+.closeIcon{
+    position:absolute;
+    right:10px;
+    top: 10px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.ownerWrapper{
+    display: flex;
+    gap: 20px;
+    align-items:center;
+    flex-direction:row;
+}
+.listItem{
+    padding-left:0 !important
+}
+.marker{
+    width:30px;
+    height:30px;
+}
+.markModalBtnsWrapper{
+    display: flex;
+    flex-direction:row;
+    gap: 15px;
+    margin-bottom:15px;
+    margin-top: 25px
+}
+.markModalBtn{
+    text-transform: capitalize;
+    background-color: #5A328A;
+    padding: 10px 57px 10px 57px;
+    border-radius:25px;
+    border: 0;
+    color: white
+}
+.markModalBtnPink{
+    @extend .markModalBtn;
+    background-color: #E31E86
+}
