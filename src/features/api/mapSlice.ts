@@ -8,6 +8,7 @@ export const mapApiSlice = apiSlice.injectEndpoints({
     }),
     getAllMarkers: builder.query({
       query: () => "/addresses",
+
       providesTags: ["Marker"],
     }),
     getMarker: builder.query({

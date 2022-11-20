@@ -6,7 +6,24 @@ export const userApiSlice = apiSlice.injectEndpoints({
       query: () => "/users",
       providesTags: ["User"],
     }),
+    getUser: builder.mutation<any, any>({
+      query: (state: any) => ({
+        url: "/login",
+        method: "POST",
+        body: state,
+        providesTags: ["User"],
+      }),
+    }),
+    createUser: builder.mutation<any, any>({
+      query: (state: any) => ({
+        url: "/all/register",
+        method: "POST",
+        body: state,
+        providesTags: ["User"],
+      }),
+    }),
   }),
 });
 
-export const { useGetAllUsersQuery } = userApiSlice;
+export const { useGetAllUsersQuery, useGetUserMutation, useCreateUserMutation } =
+  userApiSlice;
