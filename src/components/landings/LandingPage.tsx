@@ -1,10 +1,9 @@
-import React from "react";
-import { Navbar } from "../Layout/Navbar/Navbar";
+import MapComponent from "../map";
 
 export const LandingPage = () => {
   return (
     <div>
-      <Navbar />
+      <MapComponent />
     </div>
   );
 };

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/img/logo.png";
+import styles from "./Navbar.module.scss";
+
 export const Navbar = () => {
   return (
-    <nav>
+    <nav className={styles.navbar}>
       <img src={logo} alt="logo" />
       <ul>
         <li>
