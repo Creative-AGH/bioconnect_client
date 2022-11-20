@@ -45,6 +45,7 @@ export default function RegisterForm() {
       <Stack spacing={1} direction="column">
         <label>Email</label>
         <OutlinedInput
+          type="email"
           color="primary"
           {...register("email", { required: "Email Address is required" })}
           aria-invalid={errors.email ? "true" : "false"}
@@ -60,11 +61,17 @@ export default function RegisterForm() {
         {errors.surname && <span>Surname is required</span>}
 
         <label>Password</label>
-        <OutlinedInput {...register("password", { required: true })} />
+        <OutlinedInput
+          type="password"
+          {...register("password", { required: true })}
+        />
         {errors.password && <span>Password is required</span>}
 
         <label>Repeat password</label>
-        <OutlinedInput {...register("repeatPassword", { required: true })} />
+        <OutlinedInput
+          type="password"
+          {...register("repeatPassword", { required: true })}
+        />
         {errors.repeatPassword && <span>Repear password is required</span>}
 
         <Button variant="contained" type="submit">
