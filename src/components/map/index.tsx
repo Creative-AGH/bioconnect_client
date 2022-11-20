@@ -87,7 +87,11 @@ const MapComponent = () => {
         zoom: 5,
       }}
       mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      style={{ width: 1000, height: 700 }}
+      style={{
+        width: "100%",
+        height: 700,
+        boxShadow: "rgb(0 0 0 / 20%) 0px 0px 37px -6px",
+      }}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
       <FullscreenControl />

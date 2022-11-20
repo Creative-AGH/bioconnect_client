@@ -7,8 +7,9 @@ const UserLayout = () => {
       <Navbar />
       <div
         style={{
-          marginTop: "90px",
+          marginTop: "120px",
         }}
+        className="container"
       >
         <Outlet />
       </div>
