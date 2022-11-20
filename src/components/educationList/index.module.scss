@@ -2,13 +2,16 @@
     display: flex;
     flex-direction:column;
     gap: 30px;
+    padding-top: 15px;
     @media (min-width: 768px){
+        padding-top: 50px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 54px;
         padding-inline: 60px;
-        margin-bottom:40px
+        margin-bottom:50px
     }
+    background-color: rgba(223, 13, 13, 0.03)
 }
 .educationElement{
     border-radius:25px;
@@ -32,6 +35,11 @@
     text-align:center;
     color: #C5221F;
 }
+.headerGreen{
+    @extend .header;
+    margin-top:60px;
+    color: #25A851
+}
 .img{
     position: relative;
     top: -36px;
@@ -43,4 +51,14 @@
     &:hover{
         cursor: pointer;
     }
+}
+.wrapper{
+    border: 3px solid #C5221F;
+    border-radius:25px
+}
+.wrapperGreen{
+    @extend .wrapper;
+    border-color: #25A851;
+    background-color: rgba(37, 168, 81, 0.05);
+    margin-bottom:40px
 }

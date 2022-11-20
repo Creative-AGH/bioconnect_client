@@ -1,0 +1,49 @@
+{
+    "list":[
+        {
+            "name": "cukierki i lizaki",
+            "composstable": true,
+            "imgName": "lolipops"
+        },
+        {
+            "name": "włosy i sierść",
+            "composstable": true,
+            "imgName": "dog"
+        },
+        {
+            "name": "papier toaletowy",
+            "composstable": true,
+            "imgName": "toilet-paper"
+        },
+        {
+            "name": "suchy, zepsuty chleb",
+            "composstable": true,
+            "imgName": "bread"
+        },
+        {
+            "name": "korki",
+            "composstable": true,
+            "imgName": "plug"
+        },
+        {
+            "name": "przeterminowane piwo",
+            "composstable": true,
+            "imgName": "beer"
+        },
+        {
+            "name": "przeterminowane wino",
+            "composstable": true,
+            "imgName": "wine"
+        },
+        {
+            "name": "zepsuty nabiał",
+            "composstable": true,
+            "imgName": "milk"
+        },
+        {
+            "name": "biodegradalny papier",
+            "composstable": true,
+            "imgName": "paper"
+        }
+    ]
+}
