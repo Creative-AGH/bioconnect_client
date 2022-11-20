@@ -10,10 +10,13 @@ export const Navbar = () => {
       </Link>
       <ul>
         <li>
-          <Link to="/education">Porady</Link>
+          <Link to="/tutorials">Porady</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="#">Powiadomienia</Link>
+        </li> */}
+        <li>
+          <Link to="/education">Edukacja</Link>
         </li>
         <li>
           <Link to="#">Wiadomości</Link>

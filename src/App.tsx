@@ -7,6 +7,7 @@ import ErrorPage from "./views/errorPage";
 import { LandingPage } from "./components/landings/LandingPage";
 import { EducationPage } from "./components/educationList/Educationlist";
 import UserLayout from "./components/Layout/UserLayout/UserLayout";
+import Tutorials from "./components/tutotorials/Tutorials";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,6 +18,11 @@ function App() {
         {
           path: "/",
           element: <LandingPage />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "/tutorials",
+          element: <Tutorials />,
           errorElement: <ErrorPage />,
         },
         {

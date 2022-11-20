@@ -10,7 +10,7 @@ import { Position } from "geojson";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useGetAllMarkersQuery } from "../../features/api/mapSlice";
 import checkType from "./checktype";
-import styles from "./index.module.scss"
+import styles from "./index.module.scss";
 
 const initialFeatureCollection = [
   {
