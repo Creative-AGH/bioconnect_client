@@ -1,16 +1,16 @@
 import "./App.css";
-import Map from "./components/map";
 import "mapbox-gl/dist/mapbox-gl.css";
 import RegisterForm from "./components/forms/registerForm";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from "./components/forms/loginForm";
 import ErrorPage from "./views/errorPage";
+import { LandingPage } from "./components/landings/LandingPage";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <div>Hello world!</div>,
+      element: <LandingPage />,
       errorElement: <ErrorPage />,
     },
     {
@@ -23,9 +23,7 @@ function App() {
     },
   ]);
 
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
