@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginForm from "./components/forms/loginForm";
 import ErrorPage from "./views/errorPage";
 import { LandingPage } from "./components/landings/LandingPage";
+import { EducationPage } from "./components/educationList/Educationlist";
 import UserLayout from "./components/Layout/UserLayout/UserLayout";
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
         {
           path: "/register",
           element: <RegisterForm />,
+        },
+        {
+          path: "/education",
+          element: <EducationPage />,
         },
       ],
     },

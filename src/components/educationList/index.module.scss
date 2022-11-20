@@ -1,0 +1,46 @@
+.EducationElementsWrapper{
+    display: flex;
+    flex-direction:column;
+    gap: 30px;
+    @media (min-width: 768px){
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 54px;
+        padding-inline: 60px;
+        margin-bottom:40px
+    }
+}
+.educationElement{
+    border-radius:25px;
+    padding-inline: 27px;
+    font-size: 24px;
+    border: 3px solid #E31E86;
+    min-width: 240px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    &:hover{
+        background-color: #E31E86;
+        border-color: #86085e;
+        cursor: pointer;
+    }
+}
+.header{
+    font-size:54px;
+    margin-bottom:80px;
+    text-align:center;
+    color: #C5221F;
+}
+.img{
+    position: relative;
+    top: -36px;
+}
+.closeIcon{
+    position:absolute;
+    right:10px;
+    top: 10px;
+    &:hover{
+        cursor: pointer;
+    }
+}

@@ -50,7 +50,7 @@ export default function RegisterForm() {
           {...register("email", { required: "Email Address is required" })}
           aria-invalid={errors.email ? "true" : "false"}
         />
-        {errors?.email && <p>{errors.email.message}</p>}
+        {errors.email && <p>{errors.email.message}</p>}
 
         <label>Name</label>
         <OutlinedInput {...register("name", { required: true })} />

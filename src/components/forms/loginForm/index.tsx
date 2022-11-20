@@ -11,7 +11,9 @@ type Inputs = {
   password: string;
 };
 
-export default function App() {
+export default function LoginForm() {
+  const [loginUser, { isLoading }] = useGetUserMutation();
+
   const schema = yup
     .object({
       email: yup.string().required(),
@@ -26,8 +28,6 @@ export default function App() {
   } = useForm<Inputs>({
     resolver: yupResolver(schema),
   });
-
-  const [loginUser, { isLoading }] = useGetUserMutation();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { email: username, ...res } = data;
