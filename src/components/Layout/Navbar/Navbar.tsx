@@ -19,10 +19,10 @@ export const Navbar = () => {
           <Link to="#">Wiadomości</Link>
         </li>
         <li>
-          <Link to="#">Zarejestruj się</Link>
+          <Link to="/register">Zarejestruj się</Link>
         </li>
         <li>
-          <Link to="#">Zaloguj się</Link>
+          <Link to="/login">Zaloguj się</Link>
         </li>
       </ul>
     </nav>

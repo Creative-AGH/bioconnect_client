@@ -5,10 +5,12 @@ import Map, {
   NavigationControl,
   GeolocateControl,
 } from "react-map-gl";
+import { MarkerModal } from "./MarkerModal";
 import { Position } from "geojson";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useGetAllMarkersQuery } from "../../features/api/mapSlice";
 import checkType from "./checktype";
+import styles from "./index.module.scss"
 
 const initialFeatureCollection = [
   {
@@ -27,6 +29,10 @@ const MapComponent = () => {
 
   const { lat, lng, error: errGeoLoc } = useGeoLocation();
   const { data, error: errMarkers } = useGetAllMarkersQuery(null);
+  const [open, setOpen] = useState(false);
+  const [dataToMarkerModal, setDataToMarkerModal] = useState();
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     if (data) {
@@ -52,6 +58,11 @@ const MapComponent = () => {
   //     });
   //   }
   // }, [lat, lng]);
+
+  const markerAction = (index: number) => {
+    setDataToMarkerModal(featureCollection[index]);
+    handleOpen();
+  };
 
   return (
     <Map
@@ -89,17 +100,32 @@ const MapComponent = () => {
             return (
               x &&
               y && (
-                <Marker longitude={x} latitude={y} anchor="bottom" key={index}>
-                  <img src={checkType(categoryOfWaste)} alt="title" />
+                <Marker
+                  longitude={x}
+                  latitude={y}
+                  anchor="bottom"
+                  key={index}
+                  onClick={() => markerAction(index)}
+                >
+                  <img
+                    src={checkType(categoryOfWaste)}
+                    className={styles.marker}
+                    alt={`biowaste, type: ${categoryOfWaste}`}
+                  />
                 </Marker>
               )
             );
           }
         )}
+      {open && (
+        <MarkerModal
+          open={open}
+          handleClose={handleClose}
+          data={dataToMarkerModal}
+        />
+      )}
     </Map>
   );
 };
 
 export default MapComponent;
-
-//sk.eyJ1Ijoiam9obnF3ZXJ0eSIsImEiOiJjbGFtYzN2NncwNHJhM29tcXIwNWx5MGxyIn0.MPD5ASfj-WsilhnPLrN3xA

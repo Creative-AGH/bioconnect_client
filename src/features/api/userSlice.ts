@@ -6,6 +6,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
       query: () => "/users",
       providesTags: ["User"],
     }),
+    getOneUser: builder.query({
+      query: () => "/users",
+      providesTags: ["User"],
+    }),
     getUser: builder.mutation<any, any>({
       query: (state: any) => ({
         url: "/login",
