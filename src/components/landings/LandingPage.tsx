@@ -13,10 +13,9 @@ export const LandingPage = () => {
         <div className={styles.column}>
           <h1>BioConnect</h1>
           <h2>Wadowice</h2>
-          <h3>Lörem ipsum badåktigt nir, men</h3>
+          <h3>Kompost “Złotem Ogrodników”</h3>
           <p>
-            m än jinade viligen jenektig lagen om lanas oktig spejenyre, pangar
-            geogt utom henifiera, kad jag demosocial i nytren mikropöt belig.{" "}
+          Ten naturalny nawóz użyźnia, napowietrza, zmniejsza zakwaszenie i zachwaszczenie gleby. Rośliny rosną większe, a plony są zdecydowanie okazalsze. Dzięki kompostownikowi oszczędzisz zarówno na zakupie chemicznych środków, jak i na wywozie bioodpadów
           </p>
           <Button
             variant="outlined"
@@ -26,6 +25,7 @@ export const LandingPage = () => {
               borderRadius: "36px",
               fontSize: "24px",
             }}
+            className={styles.btn}
           >
             Zadeklaruj bio odpady
           </Button>
